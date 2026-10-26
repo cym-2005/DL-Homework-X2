@@ -1,0 +1,156 @@
+{
+  "exported_at_utc": "2026-10-03T05:14:20.108679+00:00",
+  "seed": 2026,
+  "split_sizes": {
+    "training": 50000,
+    "validation": 10000,
+    "test": 10000
+  },
+  "preprocessing": {
+    "features_per_image": 784,
+    "pixel_scaling": "divide by 255.0",
+    "input_dtype": "float32"
+  },
+  "parameter_initialization": "zero weights and zero biases",
+  "selection_rule": "highest final validation accuracy; first configured run wins ties",
+  "selected_configuration": "baseline",
+  "selected_validation_accuracy": 0.9056,
+  "test_accuracy": 0.9143,
+  "environment_at_export": {
+    "python": "3.11.9",
+    "numpy": "1.26.4",
+    "matplotlib": "3.7.2",
+    "ipykernel": "7.3.0"
+  },
+  "runs": {
+    "baseline": {
+      "configuration": {
+        "learning_rate": 0.1,
+        "lambda": 0.0001,
+        "epochs": 8,
+        "batch_size": 256
+      },
+      "final_train_loss": 0.32775219097137454,
+      "final_train_accuracy": 0.91062,
+      "final_val_accuracy": 0.9056,
+      "history": {
+        "train_loss": [
+          0.4928444278240204,
+          0.41539373664855955,
+          0.3828294503688812,
+          0.36284962005615234,
+          0.3501571737289429,
+          0.34125682239532473,
+          0.3329413628578186,
+          0.32775219097137454
+        ],
+        "train_accuracy": [
+          0.87606,
+          0.89066,
+          0.89686,
+          0.90154,
+          0.90364,
+          0.90682,
+          0.90882,
+          0.91062
+        ],
+        "val_accuracy": [
+          0.8733,
+          0.8869,
+          0.8934,
+          0.8987,
+          0.8999,
+          0.9017,
+          0.9036,
+          0.9056
+        ]
+      }
+    },
+    "smaller learning rate": {
+      "configuration": {
+        "learning_rate": 0.03,
+        "lambda": 0.0001,
+        "epochs": 8,
+        "batch_size": 256
+      },
+      "final_train_loss": 0.3991806147098541,
+      "final_train_accuracy": 0.8941,
+      "final_val_accuracy": 0.8912,
+      "history": {
+        "train_loss": [
+          0.7460093354701995,
+          0.576441373538971,
+          0.5078306860923767,
+          0.46871768221855165,
+          0.4431579840183258,
+          0.4246076313495636,
+          0.41027593789100647,
+          0.3991806147098541
+        ],
+        "train_accuracy": [
+          0.84538,
+          0.86628,
+          0.87486,
+          0.88142,
+          0.88488,
+          0.88902,
+          0.89188,
+          0.8941
+        ],
+        "val_accuracy": [
+          0.8418,
+          0.8628,
+          0.8718,
+          0.8779,
+          0.8812,
+          0.8863,
+          0.8881,
+          0.8912
+        ]
+      }
+    },
+    "stronger regularization": {
+      "configuration": {
+        "learning_rate": 0.1,
+        "lambda": 0.01,
+        "epochs": 8,
+        "batch_size": 256
+      },
+      "final_train_loss": 0.5493473100662232,
+      "final_train_accuracy": 0.90078,
+      "final_val_accuracy": 0.8992,
+      "history": {
+        "train_loss": [
+          0.6037014532089233,
+          0.5677391755580902,
+          0.5584120953083038,
+          0.5536544167995453,
+          0.5520697689056396,
+          0.5507422041893005,
+          0.5492484390735626,
+          0.5493473100662232
+        ],
+        "train_accuracy": [
+          0.87426,
+          0.88764,
+          0.8929,
+          0.89632,
+          0.89692,
+          0.89982,
+          0.90056,
+          0.90078
+        ],
+        "val_accuracy": [
+          0.8708,
+          0.8844,
+          0.8902,
+          0.8945,
+          0.8937,
+          0.8965,
+          0.8973,
+          0.8992
+        ]
+      }
+    }
+  }
+}

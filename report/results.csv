@@ -1,0 +1,4 @@
+configuration,hidden_size,learning_rate,reg,epochs,batch_size,train_loss,train_accuracy,val_accuracy,selected,test_accuracy
+baseline,32,0.1,0.0001,8,256,0.2226494997739792,0.93824,0.931,False,
+smaller learning rate,32,0.03,0.0001,8,256,0.31429755687713623,0.91332,0.9094,False,
+wider hidden layer,64,0.1,0.0001,8,256,0.21625804901123047,0.94152,0.9353,True,0.9389

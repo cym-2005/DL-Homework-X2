@@ -1,0 +1,175 @@
+{
+  "export_time_utc": "2026-10-24T05:37:34.725879+00:00",
+  "seed": 2026,
+  "split": {
+    "train": 50000,
+    "validation": 10000,
+    "test": 10000
+  },
+  "split_recipe": "default_rng(2026).permutation(60000): first 50000 train, last 10000 validation",
+  "train_indices_sha256": "b584ca0b931e27f9de28c0257a627632f0bfc8b6af950161d9077b3fff3448f0",
+  "val_indices_sha256": "fd041c7619f14b80653e3549716513d9e739e20d9d109d51f908b9836b658eb2",
+  "data_sha256": {
+    "t10k-images-idx3-ubyte.gz": "8d422c7b0a1c1c79245a5bcf07fe86e33eeafee792b84584aec276f5a2dbc4e6",
+    "t10k-labels-idx1-ubyte.gz": "f7ae60f92e00ec6debd23a6088c31dbd2371eca3ffa0defaefb259924204aec6",
+    "train-images-idx3-ubyte.gz": "440fcabf73cc546fa21475e81ea370265605f56be210a4024d2ca8f203523609",
+    "train-labels-idx1-ubyte.gz": "3552534a0a558bbed6aed32b30c495cca23d567ec52cac8be1a0730e8010255c"
+  },
+  "preprocessing": "flatten 28x28 to 784; float32 / 255.0",
+  "initialization": "W1 normal std sqrt(2/784); W2 normal std sqrt(1/H); zero biases; float32",
+  "epochs": 8,
+  "batch_size": 256,
+  "objective": "mean cross-entropy + 0.5*reg*(sum(W1**2)+sum(W2**2)); no bias penalty",
+  "optimizer": "mini-batch SGD; fixed learning rate; seeded reshuffling each epoch",
+  "selection_rule": "highest final validation accuracy; first configured run wins ties",
+  "implementation_checks": {
+    "supplied_largest_absolute_error": 2.1398785521320463e-11,
+    "extreme_logit_loss": 2000.0,
+    "active_inactive_relu_errors": {
+      "W1": 2.1913352209190773e-11,
+      "b1": 1.0849319706518479e-11,
+      "W2": 1.591884089824358e-11,
+      "b2": 6.43896047591852e-12
+    },
+    "relu_derivative_at_zero": "passed"
+  },
+  "runs": {
+    "baseline": {
+      "config": {
+        "name": "baseline",
+        "hidden_size": 32,
+        "learning_rate": 0.1,
+        "reg": 0.0001
+      },
+      "history": {
+        "train_loss": [
+          0.4122186601161957,
+          0.34153908491134644,
+          0.3019478917121887,
+          0.2777807116508484,
+          0.25974738597869873,
+          0.24692627787590027,
+          0.23044072091579437,
+          0.2226494997739792
+        ],
+        "train_accuracy": [
+          0.88554,
+          0.90324,
+          0.9147,
+          0.92204,
+          0.92646,
+          0.93108,
+          0.93572,
+          0.93824
+        ],
+        "val_accuracy": [
+          0.8873,
+          0.9014,
+          0.911,
+          0.919,
+          0.9235,
+          0.9275,
+          0.9311,
+          0.931
+        ]
+      }
+    },
+    "smaller learning rate": {
+      "config": {
+        "name": "smaller learning rate",
+        "hidden_size": 32,
+        "learning_rate": 0.03,
+        "reg": 0.0001
+      },
+      "history": {
+        "train_loss": [
+          0.6983156800270081,
+          0.48658373951911926,
+          0.4145146310329437,
+          0.37667572498321533,
+          0.3542005717754364,
+          0.3379380702972412,
+          0.3241557776927948,
+          0.31429755687713623
+        ],
+        "train_accuracy": [
+          0.8332,
+          0.87556,
+          0.88864,
+          0.8981,
+          0.90222,
+          0.90714,
+          0.91058,
+          0.91332
+        ],
+        "val_accuracy": [
+          0.8293,
+          0.8732,
+          0.8859,
+          0.8935,
+          0.8981,
+          0.9024,
+          0.9073,
+          0.9094
+        ]
+      }
+    },
+    "wider hidden layer": {
+      "config": {
+        "name": "wider hidden layer",
+        "hidden_size": 64,
+        "learning_rate": 0.1,
+        "reg": 0.0001
+      },
+      "history": {
+        "train_loss": [
+          0.41286537051200867,
+          0.34236669540405273,
+          0.30199164152145386,
+          0.2758229374885559,
+          0.25679656863212585,
+          0.24132369458675385,
+          0.22457189857959747,
+          0.21625804901123047
+        ],
+        "train_accuracy": [
+          0.88754,
+          0.90442,
+          0.91476,
+          0.92366,
+          0.92882,
+          0.9331,
+          0.93922,
+          0.94152
+        ],
+        "val_accuracy": [
+          0.8867,
+          0.9017,
+          0.9143,
+          0.9198,
+          0.9265,
+          0.9311,
+          0.9345,
+          0.9353
+        ]
+      }
+    }
+  },
+  "selected_configuration": "wider hidden layer",
+  "test_evaluations": 1,
+  "test_accuracy": 0.9389,
+  "test_cross_entropy": 0.2100999653339386,
+  "test_correct": 9389,
+  "environment": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "matplotlib": "3.10.8",
+    "platform": "Linux",
+    "blas_thread_environment": {
+      "OPENBLAS_NUM_THREADS": "4",
+      "OMP_NUM_THREADS": "4",
+      "MKL_NUM_THREADS": null
+    },
+    "execution_method": "Python cell runner"
+  }
+}
